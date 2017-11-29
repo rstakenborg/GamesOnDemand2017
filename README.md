@@ -8,3 +8,5 @@ Software:
 Unity 2017.1.1
 Visual Studio 2017
 Gitlab Desktop
+
+Building:
