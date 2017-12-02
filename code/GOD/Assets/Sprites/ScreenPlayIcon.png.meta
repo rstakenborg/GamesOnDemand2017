@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6b5697acdbacbae4b85bd6ab4239cf54
-timeCreated: 1512189788
+timeCreated: 1512200341
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -280,7 +280,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 553
-        y: 662
+        y: 663
         width: 552
         height: 110
       alignment: 0
@@ -293,7 +293,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 553
-        y: 661
+        y: 550
         width: 552
         height: 110
       alignment: 0
@@ -306,7 +306,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 553
-        y: 553
+        y: 442
         width: 552
         height: 110
       alignment: 0
@@ -319,7 +319,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 553
-        y: 442
+        y: 332
         width: 552
         height: 110
       alignment: 0
@@ -332,7 +332,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 553
-        y: 333
+        y: 222
         width: 552
         height: 110
       alignment: 0
@@ -345,7 +345,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 553
-        y: 221
+        y: 110
         width: 552
         height: 110
       alignment: 0
@@ -355,19 +355,6 @@ TextureImporter:
       tessellationDetail: 0
     - serializedVersion: 2
       name: ScreenPlayIcon_19
-      rect:
-        serializedVersion: 2
-        x: 553
-        y: 111
-        width: 552
-        height: 110
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: ScreenPlayIcon_20
       rect:
         serializedVersion: 2
         x: 553
