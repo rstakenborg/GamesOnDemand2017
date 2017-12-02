@@ -17,14 +17,11 @@ Platform assembly: C:\gitlab\GamesOnDemand2017\code\InputSimulator\simulator_Dat
 Loading C:\gitlab\GamesOnDemand2017\code\InputSimulator\simulator_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\gitlab\GamesOnDemand2017\code\InputSimulator\simulator_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\gitlab\GamesOnDemand2017\code\InputSimulator\simulator_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.183 seconds
+- Completed reload, in  0.029 seconds
 Platform assembly: C:\gitlab\GamesOnDemand2017\code\InputSimulator\simulator_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\gitlab\GamesOnDemand2017\code\InputSimulator\simulator_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1200 60Hz; virtual: 3840x1200 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.388122 ms
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2050 -> priority: 1 
-  Thread -> id: 5c0 -> priority: 1 
+UnloadTime: 1.014065 ms
