@@ -20,8 +20,8 @@ Loading C:\gitlab\GamesOnDemand2017\code\InputSimulator\simulator_Data\Managed\U
 - Completed reload, in  0.029 seconds
 Platform assembly: C:\gitlab\GamesOnDemand2017\code\InputSimulator\simulator_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\gitlab\GamesOnDemand2017\code\InputSimulator\simulator_Data\Managed\System.dll (this message is harmless)
-desktop: 1920x1200 60Hz; virtual: 3840x1200 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
+desktop: 1920x1200 60Hz; virtual: 3840x1200 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 1.014065 ms
+UnloadTime: 0.885743 ms
