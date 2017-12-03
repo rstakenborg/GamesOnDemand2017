@@ -52,16 +52,22 @@ public class PlayerAdd : MonoBehaviour {
         var coordslist = FloorPadInput.GetPressedCoordinates();
         var players = GameObject.FindGameObjectsWithTag("Player");
         foreach (var coord in coordslist) {
+            bool make = true;
             foreach (var player in players) {
                 if (player.GetComponent<PlayerExtras>().GetPosition() == coord) {
+                    make = false;
+                    break;
                 }
             }
-            CreatePlayer(coord);
+            if (make) {
+                CreatePlayer(coord);
+            }
         }
     }
 
     void GetPressedCoordinates(Vector2[] coordslist) {
-        Debug.Log(coordslist);
+        // todo:: for each player, move if a neighbor is lit and their coord isn't
+        //Debug.Log(coordslist);
     }
 
     void OnTilePressed(Vector2 coords)

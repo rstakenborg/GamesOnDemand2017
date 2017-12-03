@@ -15,9 +15,8 @@ public class DestroyBaddies : MonoBehaviour {
 	}
 
     void OnCollisionEnter(Collision col) {
-        Destroy(col.gameObject);
         if (col.gameObject.tag == destroyTag) {
-            
+            Destroy(col.gameObject);
         }
     }
 }

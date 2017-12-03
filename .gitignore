@@ -9,6 +9,7 @@ Assets/AssetStoreTools*
 android_sdk_3859397
 platforms
 build-tools
+*_data
 # Visual Studio 2015 cache directory
 /.vs/
 
