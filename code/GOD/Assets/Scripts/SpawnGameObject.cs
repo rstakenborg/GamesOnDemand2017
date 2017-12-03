@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEditor;
 
 public class SpawnGameObject : MonoBehaviour {
-    private List<string> prefabNames = new List<string> { "LongBaddie1" };
+    private List<string> prefabNames = new List<string> { "Bacteria" };
     public bool enabled;
     private int cooldownSeconds;
     WaitForSeconds cooldown;

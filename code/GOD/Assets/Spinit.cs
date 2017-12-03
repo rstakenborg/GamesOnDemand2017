@@ -8,9 +8,9 @@ public class Spinit : MonoBehaviour {
     private Vector3 direction;
 	// Use this for initialization
 	void Start () {
-        direction = Vector3.up;
+        direction = Vector3.forward;
         if (clockwise) {
-            direction = Vector3.down;
+            direction = Vector3.back;
         }
     }
 
