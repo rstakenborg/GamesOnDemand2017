@@ -2,9 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Tile {
+    public List<Tile> neighbors;
+    Vector2 coord;
+    static private Vector2 matminmax = new Vector2(0, 9);
+
+    public Tile(Vector2 incoord) {
+        coord = incoord;
+    }
+
+    public Vector2 GetCoord() {
+        return coord;
+    }
+    private void SetNeighbors() {
+        foreach (var candidate in new List<Vector2> {
+                new Vector2(coord.x + 1, coord.y),
+                new Vector2(coord.x - 1, coord.y),
+                new Vector2(coord.x, coord.y + 1),
+                new Vector2(coord.x, coord.y - 1)
+            }) {
+            // .. note:: we do not check the diagonal neighbors for this, but maybe we'll have to?
+            if (OnMat(candidate)){
+                neighbors.Add(new Tile(candidate));
+            }
+        }
+
+    }
+
+    private bool OnMat(Vector2 candidate) {
+        if ((candidate.x < coord.x) || (candidate.x > coord.y) || (candidate.y < coord.x) || (candidate.y > coord.y)) { return false; }
+        return true;
+    }
+}
+
+
 public class PlayerAdd : MonoBehaviour {
     public GameObject player;
     private Vector2 limit;
+
     void Start()
     {
         limit = new Vector2(5, 5); // z is always -0.25 for us
@@ -14,12 +49,25 @@ public class PlayerAdd : MonoBehaviour {
     void Update()
     {
         FloorPadInput.GetEvents(gameObject);
+        var coordslist = FloorPadInput.GetPressedCoordinates();
+        var players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var coord in coordslist) {
+            foreach (var player in players) {
+                if (player.GetComponent<PlayerExtras>().GetPosition() == coord) {
+                }
+            }
+            CreatePlayer(coord);
+        }
+    }
+
+    void GetPressedCoordinates(Vector2[] coordslist) {
+        Debug.Log(coordslist);
     }
 
     void OnTilePressed(Vector2 coords)
     {
         //Debug.Log("Entered "+ coords);
-        CreatePlayer(new Vector3(coords.x, -coords.y, 0));
+        //var New = CreatePlayer(new Vector3(coords.x, -coords.y, 0));
     }
 
     void OnTileReleased(Vector2 coords)
@@ -27,8 +75,8 @@ public class PlayerAdd : MonoBehaviour {
         //Debug.Log("Leaving "+ coords);
         //CreateNewBall (new Vector3 (coords.x, 10, coords.y));
     }
-    void CreatePlayer(Vector3 coords) {
-        Instantiate(player, coords, player.transform.rotation);
+    GameObject CreatePlayer(Vector3 coords) {
+        return Instantiate(player, coords, player.transform.rotation);
     }
 
 }
