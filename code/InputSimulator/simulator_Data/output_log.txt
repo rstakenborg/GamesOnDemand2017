@@ -25,3 +25,6 @@ Platform assembly: C:\gitlab\GamesOnDemand2017\code\InputSimulator\simulator_Dat
 desktop: 1920x1200 60Hz; virtual: 3840x1200 at 0,0
 <RI> Initialized touch support.
 UnloadTime: 0.886704 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: ef8 -> priority: 1 
+  Thread -> id: 2ec0 -> priority: 1 
