@@ -6,7 +6,10 @@ public class Spinit : MonoBehaviour {
     public bool clockwise = true;
     public float speedx = 1.0f;
     private Vector3 direction;
-	// Use this for initialization
+    // Use this for initialization
+    public void Reverse() {
+        clockwise = !clockwise;
+    }
 	void Start () {
         direction = Vector3.forward;
         if (clockwise) {
