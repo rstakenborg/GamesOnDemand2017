@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class SpawnGameObject : MonoBehaviour {
     public List<string> prefabNames = new List<string> { "Bacteria", "Bacteria_2" };
