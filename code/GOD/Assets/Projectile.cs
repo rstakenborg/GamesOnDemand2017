@@ -19,7 +19,15 @@ public class Projectile : MonoBehaviour
     {
         // on collision we should 
         if (col.gameObject.tag == "Baddie") {
-            Destroy(col.gameObject);
+            var comp = col.gameObject.GetComponent<FadeAndDestroy>();
+            if (comp)
+            {
+                comp.DelayDestroy();
+            }
+            else {
+                Destroy(col.gameObject);
+            }
+            
         }
         Destroy(gameObject);
     }
