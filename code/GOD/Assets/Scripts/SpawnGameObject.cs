@@ -14,6 +14,7 @@ public class SpawnGameObject : MonoBehaviour {
     public int minSeconds = 4;
     public int minSpeed = 100;
     public int maxSpeed = 400;
+    public int rotSpeed;
     public bool rotate = true;
     public bool sin = true;
     WaitForSeconds cooldown;
@@ -53,17 +54,20 @@ public class SpawnGameObject : MonoBehaviour {
         {
             baddie.AddComponent<SinWaveMover>();
         }
-
-        if (rotate)
-        {
-            var comp = baddie.AddComponent<Spinit>();
-            comp.speedx = Random.Range(minSpeed, maxSpeed);
-            // random bool
-            comp.clockwise = (Random.value > 0.5f);
-        }
         else {
             // .. todo:: target toward rather than "down"
             baddie.GetComponent<Rigidbody>().velocity = Vector3.down * Random.Range(minSpeed, maxSpeed);
+        }
+        if (rotate)
+        {
+            if (rotSpeed == -1)
+            {
+                rotSpeed = Random.Range(minSpeed, maxSpeed);
+            }
+            var comp = baddie.AddComponent<Spinit>();
+            comp.speedx = rotSpeed;
+            // random bool
+            comp.clockwise = (Random.value > 0.5f);
         }
 
         return baddie;
