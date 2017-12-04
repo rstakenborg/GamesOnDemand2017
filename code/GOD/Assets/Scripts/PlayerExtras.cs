@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerExtras : MonoBehaviour {
 
-    private List<Tile> tiles;
+    public List<Tile> tiles;
     void Start() {
+        tiles = new List<Tile> { };
         var coord = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
         var tile = new Tile(coord);
         AddTile(tile);

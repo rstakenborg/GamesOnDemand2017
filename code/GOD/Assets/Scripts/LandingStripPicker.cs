@@ -3,27 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LandingStripPicker : MonoBehaviour {
+    private Vector2 coords;
+    public Sprite[] sprite;
+    private void Start()
+    {
+        sprite = Resources.LoadAll<Sprite>("ScreenPlayIcon");
+        UpdateSpriteIfNeeded();
+    }
 
     void Update()
     {
-        FloorPadInput.GetEvents(gameObject);
+        UpdateSpriteIfNeeded();
     }
-
-    void OnTilePressed(Vector2 coords)
-    {
-        Debug.Log("Entered " + coords);
-        float sheetNumber = coords.y;
-        if (coords.x > 5.0) {
+    void UpdateSpriteIfNeeded() {
+        var extras = transform.parent.GetComponent<PlayerExtras>();
+        var newcoords = extras.GetPosition();
+        if (coords == newcoords) { return; }
+        coords = newcoords;
+        int sheetNumber = Mathf.FloorToInt(coords.y);
+        if (coords.x > 5)
+        {
             // we're in the left columns, sheet will be 0-9
-            sheetNumber += 10.0f;
+            sheetNumber += 10;
         }
-        Debug.Log("Spritesheet " + sheetNumber);
+        var comp = gameObject.GetComponent<SpriteRenderer>().sprite = sprite[sheetNumber];
     }
-
-    void OnTileReleased(Vector2 coords)
-    {
-        //Debug.Log("Leaving " + coords);
-        //CreateNewBall (new Vector3 (coords.x, 10, coords.y));
-    }
-
 }

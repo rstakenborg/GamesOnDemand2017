@@ -18,7 +18,7 @@ public class SinWaveMover : MonoBehaviour
         m_speed = Random.Range(0.0f, 2.0f);
 
         // Move center along x axis
-        m_centerPosition.y -= deltaTime * m_speed;
+        m_centerPosition.y += deltaTime * m_speed;
 
         // Update degrees
         float degreesPerSecond = 360.0f / m_period;
