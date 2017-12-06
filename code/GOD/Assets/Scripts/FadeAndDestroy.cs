@@ -6,9 +6,12 @@ public class FadeAndDestroy : MonoBehaviour {
 
     public float cooldownSeconds = 0.01f;
     public bool alive = true;
+    private List<GameObject> antibodies;
+    public int health = 2;
     WaitForSeconds cooldown;
 	// Use this for initialization
 	void Start () {
+        antibodies = new List<GameObject> { };
     }
 	
 	// Update is called once per frame
@@ -16,14 +19,18 @@ public class FadeAndDestroy : MonoBehaviour {
 		
 	}
 
-    public void DelayDestroy() {
+    public void DelayDestroy(GameObject other) {
         var comp = GetComponent<Spinit>();
         if (comp) {
             comp.Reverse();
         }
         if (!alive) { return;  }
+        antibodies.Add(other);
         cooldown = new WaitForSeconds(cooldownSeconds);
-        StartCoroutine("ShrinkToKill");
+        if (antibodies.Count >= health) {
+            StartCoroutine("ShrinkToKill");
+        }
+        
     }
 
     IEnumerator ShrinkToKill()
@@ -47,6 +54,9 @@ public class FadeAndDestroy : MonoBehaviour {
             yield return cooldown;
             if (transform.localScale.x <= 0.0f)
             {
+                foreach (var go in antibodies) {
+                    Destroy(go);
+                }
                 Destroy(gameObject);
             }
             var scale = transform.localScale;

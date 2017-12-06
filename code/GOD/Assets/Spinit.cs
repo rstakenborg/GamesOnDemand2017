@@ -19,6 +19,15 @@ public class Spinit : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        var eco = GameObject.FindGameObjectWithTag("Economy");
+        if (eco) {
+            var comp = eco.GetComponent<FPSCheck>();
+            if (comp) {
+                if (comp.DoEco()){
+                    return;
+                }
+            }
+        }
         transform.Rotate(direction, speedx * Time.deltaTime);
     }
 }
