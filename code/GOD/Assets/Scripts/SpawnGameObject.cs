@@ -34,10 +34,12 @@ public class SpawnGameObject : MonoBehaviour {
     IEnumerator SpawnAtInterval()
     {
         while (true) {
-            yield return cooldown;
             if (enabled)
             {
+                //                var num = GameObject.Find("PlayerTracker").GetComponent<PlayerAdd>().numberOfPlayers;
+                //if (!GameObject.Find("EconomyHandler").GetComponent<FPSCheck>().DoEco())
                 var instance = CreateBaddie(transform.position);
+                yield return cooldown;
             }
         }
     }
@@ -55,7 +57,7 @@ public class SpawnGameObject : MonoBehaviour {
             baddie.AddComponent<SinWaveMover>();
         }
         else {
-            // .. todo:: target toward rather than "down"
+            // .. todo:: target toward rather than "down". This is currently only used for projectiles
             baddie.GetComponent<Rigidbody>().velocity = Vector3.down * Random.Range(minSpeed, maxSpeed);
         }
         if (rotate)

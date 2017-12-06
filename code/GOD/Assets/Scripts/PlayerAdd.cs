@@ -6,7 +6,6 @@ public class Tile {
     public List<Tile> neighbors;
     Vector2 coord;
     static private Vector2 matminmax = new Vector2(0, 9);
-
     public Tile(Vector2 incoord) {
         coord = incoord;
     }
@@ -39,6 +38,7 @@ public class Tile {
 public class PlayerAdd : MonoBehaviour {
     public GameObject player;
     private Vector2 limit;
+    public int numberOfPlayers = 0;
 
     void Start()
     {
@@ -51,6 +51,7 @@ public class PlayerAdd : MonoBehaviour {
         FloorPadInput.GetEvents(gameObject);
         var coordslist = FloorPadInput.GetPressedCoordinates();
         var players = GameObject.FindGameObjectsWithTag("Player");
+        numberOfPlayers = players.Length;
         foreach (var coord in coordslist) {
             bool make = true;
             foreach (var player in players) {
