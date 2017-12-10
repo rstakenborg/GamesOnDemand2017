@@ -11,9 +11,31 @@ public class PlayerExtras : MonoBehaviour {
         var tile = new Tile(coord);
         AddTile(tile);
     }
+
+    public Tile GetTile()
+    {
+        return tiles[0];
+    }
+
     public Vector2 GetPosition() {
         // .. todo:: return lowest Vector2 by x first, y second
         return tiles[0].GetCoord();
+    }
+
+    public bool PositionIsValid() {
+        var pos = GetPosition();
+        return (FloorPadInput.GetPressedCoordinates().Contains(pos));
+    }
+    public void Move(Tile moveto) {
+        // .. todo:: if moveto is empty and in neighbors
+        var tile = GetTile();
+        var mtcoord = moveto.GetCoord();
+        transform.position = new Vector3(mtcoord.x, mtcoord.y, gameObject.transform.position.z);
+        tiles.Add(moveto);
+        if (tile != null) {
+            tiles.Remove(tile);
+        }
+        
     }
 
     void AddTile(Tile addme) {
@@ -34,5 +56,6 @@ public class PlayerExtras : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	}
+        FloorPadInput.GetEvents(gameObject);
+    }
 }
