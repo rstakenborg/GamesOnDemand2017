@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,9 @@ public class Tile {
     public Vector2 GetCoord() {
         return coord;
     }
-    private void SetNeighbors() {
+
+    public List<Tile> GetNeighbors() {
+        neighbors = new List<Tile> { };
         foreach (var candidate in new List<Vector2> {
                 new Vector2(coord.x + 1, coord.y),
                 new Vector2(coord.x - 1, coord.y),
@@ -25,11 +27,13 @@ public class Tile {
                 neighbors.Add(new Tile(candidate));
             }
         }
-
+        return neighbors;
     }
 
     private bool OnMat(Vector2 candidate) {
-        if ((candidate.x < coord.x) || (candidate.x > coord.y) || (candidate.y < coord.x) || (candidate.y > coord.y)) { return false; }
+        if ((candidate.x < 0) || (candidate.x > 9) || (candidate.y < 0) || (candidate.y > 9)) {
+            return false;
+        }
         return true;
     }
 }
@@ -52,6 +56,25 @@ public class PlayerAdd : MonoBehaviour {
         var coordslist = FloorPadInput.GetPressedCoordinates();
         var players = GameObject.FindGameObjectsWithTag("Player");
         numberOfPlayers = players.Length;
+        // move players if their position isn't held but a neighbor is
+        // pop all player coords
+        // make new
+        foreach (var player in players) {
+            var extras = player.GetComponent<PlayerExtras>();
+            if (extras.PositionIsValid()) { continue; }
+            Tile tile = extras.GetTile();
+            Tile move = tile;
+            foreach (var nei in tile.GetNeighbors()) {
+                if (coordslist.Contains(nei.GetCoord())) {
+                    move = nei;
+                    break;
+                }
+            }
+            if (move != tile)
+            {
+                extras.Move(move);
+            }
+        }
         foreach (var coord in coordslist) {
             bool make = true;
             foreach (var player in players) {
@@ -62,6 +85,11 @@ public class PlayerAdd : MonoBehaviour {
             }
             if (make) {
                 CreatePlayer(coord);
+            }
+        }
+        foreach (var player in players) {
+            if (!player.GetComponent<PlayerExtras>().PositionIsValid()) {
+                Destroy(player);
             }
         }
     }
@@ -82,6 +110,7 @@ public class PlayerAdd : MonoBehaviour {
         //Debug.Log("Leaving "+ coords);
         //CreateNewBall (new Vector3 (coords.x, 10, coords.y));
     }
+
     GameObject CreatePlayer(Vector3 coords) {
         return Instantiate(player, coords, player.transform.rotation);
     }
