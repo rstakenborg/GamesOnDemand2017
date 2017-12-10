@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerDestroy : MonoBehaviour {
 
@@ -21,8 +19,7 @@ public class PlayerDestroy : MonoBehaviour {
     }
 
     void OnTileReleased(Vector2 coords)
-    {
-        Destroy(this.gameObject);
+    {   
         //Debug.Log("Leaving " + coords);
         //CreateNewBall (new Vector3 (coords.x, 10, coords.y));
     }
